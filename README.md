@@ -16,9 +16,9 @@ Insights and recommendations are provided on the following key areas:
 
   * Optimization Opportunities: Offering strategic next steps to improve revenue, pricing, or promotional efficiency.
 
-The SQL queries used to inspect and clean the data for this analysis can be found here [https://github.com/SuaveAnalyst/microcenter-stakeholder-report/blob/b4c8adfa755217263b653f0d71de3bfcf86ba541/Micro%20Center%20SQL%20Ad-Hoc%20Report#L26-L175.]
+The SQL queries used to inspect and clean the data for this analysis can be found here [https://github.com/SuaveAnalyst/microcenter-stakeholder-report/blob/b4c8adfa755217263b653f0d71de3bfcf86ba541/Micro%20Center%20SQL%20Ad-Hoc%20Report#L26-L175]
 
-Targeted SQL queries regarding various business questions can be found here [https://github.com/SuaveAnalyst/microcenter-stakeholder-report/blob/f00475d9e5d15a1dcddc8ae4f6f93b9e73c0c266/Micro%20Center%20SQL%20Ad-Hoc%20Report#L263-L336.]
+Targeted SQL queries regarding various business questions can be found here [https://github.com/SuaveAnalyst/microcenter-stakeholder-report/blob/de6da56e4cca384a817f6a4cacbc569685e0122c/Micro%20Center%20SQL%20Ad-Hoc%20Report#L318-L343]
 
 An interactive Power BI dashboard used to report and explore sales trends can be found here [link].
 
