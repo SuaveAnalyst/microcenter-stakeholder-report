@@ -16,7 +16,7 @@ Insights and recommendations are provided on the following key areas:
 
   * Optimization Opportunities: Offering strategic next steps to improve revenue, pricing, or promotional efficiency.
 
-The SQL queries used to inspect and clean the data for this analysis can be found here [link].
+The SQL queries used to inspect and clean the data for this analysis can be found here [https://github.com/SuaveAnalyst/microcenter-stakeholder-report/blob/b4c8adfa755217263b653f0d71de3bfcf86ba541/Micro%20Center%20SQL%20Ad-Hoc%20Report#L26-L175].
 
 Targeted SQL queries regarding various business questions can be found here [link].
 
