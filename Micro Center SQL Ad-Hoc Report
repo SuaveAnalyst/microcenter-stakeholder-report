@@ -351,9 +351,9 @@ visual exploration, time-series analysis, and modeling capabilities.
 */
 
 select 
-			week, year,quarter, month, week_number, 
-    	sku, functionality,functionality_code, color ,color_code, 
-    	feat_main_page, feat_main_flag, vendor, 
-    	weekly_sales, price, revenue
+	week, year,quarter, month, week_number, 
+  sku, functionality,functionality_code, color ,color_code, 
+  feat_main_page, feat_main_flag, vendor, 
+  weekly_sales, price, revenue
 from 
 	micro_center;
