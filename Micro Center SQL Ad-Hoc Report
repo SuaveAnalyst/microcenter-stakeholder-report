@@ -1,0 +1,358 @@
+/*
+================================================================================
+  Dataset Overview - Micro Center Weekly SKU Sales
+================================================================================
+
+The dataset consists of 4,400 rows and 8 columns, representing weekly sales
+activity for 44 unique SKUs across 100 weeks (from 2016-10-31 to 2018-09-24).
+Each row corresponds to a SKU-week pair.
+
+  Columns / Features:
+--------------------------------------------------------------------------------
+• week                 → Weekly granularity, covering Mondays only
+• sku                  → Product identifier (1 to 44)
+• weekly_sales         → Number of units sold for the SKU that week (target variable)
+• feat_main_page       → Binary flag indicating if the product was featured on homepage
+• color                → Product color (9 defined colors, plus 'none' where undefined)
+• price                → Weekly fixed price of the product (adjustable per week)
+• vendor               → Encoded vendor/brand ID (1 to 10)
+• functionality        → Product category or function (12 distinct categories)
+*/
+
+-- Overview of table
+select*
+from micro_center;
+
+/*
+====================================================
+ Light EDA - Initial Observations
+====================================================
+*/
+
+-- The dataset covers 100 distinct weeks, ranging from 2016-10-31 to 2018-09-24.
+-- The time component is not relevant for the current analysis and will be removed
+SELECT 
+    MIN(week) AS start_date,
+    MAX(week) AS end_date,
+    COUNT(DISTINCT week) AS total_weeks,
+    COUNT(*) AS total_rows
+FROM Micro_Center;
+
+
+-- 44 unique SKUs, ranging from SKU 1 to SKU 44.
+SELECT 
+    COUNT(DISTINCT sku) AS unique_skus,
+    MIN(sku) AS min_sku,
+    MAX(sku) AS max_sku
+FROM Micro_Center;
+
+
+/*Weekly sales average around 83 units, with a minimum of 0 (indicating weeks with no sales)
+and a maximum of 7,512 units, which may be an outlier. The standard deviation is high (~288),
+suggesting significant variability in sales volume across SKUs and weeks.
+*/
+SELECT 
+    COUNT(*) AS total_records,
+    AVG(weekly_sales) AS avg_sales,
+    MIN(weekly_sales) AS min_sales,
+    MAX(weekly_sales) AS max_sales,
+    Round(STDDEV(weekly_sales),2) AS std_dev_sales
+FROM Micro_Center;
+
+
+-- 1,575 records (36%) were featured on the main page, while 2,825 (64%) were not.
+-- This column can help evaluate the impact of homepage promotions on weekly sales.
+SELECT 
+    feat_main_page,
+    COUNT(*) AS record_count,
+    ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM Micro_Center), 2) AS percent_of_total
+FROM Micro_Center
+GROUP BY feat_main_page;
+
+
+-- The most common product color is black (1,691 records), followed by blue and red.
+-- There are 10 records with NULL values, which will need to be cleaned or imputed.
+SELECT 
+    color,
+    COUNT(*) AS occurrences
+FROM Micro_Center
+GROUP BY color
+ORDER BY occurrences DESC;
+
+/*
+There are 10 NULL color records spread across 4 SKUs, [9, 42, 43, 44]. 
+Most are associated with '09.Smartphone stands' and '11.Fitness trackers'. 
+These can potentially be imputed based on their SKU or functionality group.
+*/
+SELECT 
+    sku,
+    functionality,
+    vendor,
+    COUNT(*) AS null_count
+FROM Micro_Center
+WHERE color IS NULL
+GROUP BY sku, functionality, vendor;
+
+
+/*
+Table is showing:
+	-sku 9 with func 11 should be black - 2 nulls
+    -sku 42 with func 09 should be black - 3 nulls
+    -sku 43 with func 11 should be gold - 1 null
+    -sku 44 with func 09 should be black - 4 nulls
+*/
+SELECT 
+    sku,
+    functionality,
+    color
+FROM Micro_Center
+WHERE functionality IN ('11.Fitness trackers', '09.Smartphone stands');
+
+
+-- Average product price is $44.43, with prices ranging from $2.39 to $227.72.
+-- A standard deviation of $42.50 suggests wide variation in product pricing.
+SELECT 
+    ROUND(AVG(price), 2) AS avg_price,
+    ROUND(MIN(price), 2) AS min_price,
+    ROUND(MAX(price), 2) AS max_price,
+    ROUND(STDDEV(price), 2) AS std_dev_price
+FROM Micro_Center;
+
+
+-- Vendor 6 has the highest number of records (1,200), followed by vendors 10 and 8.
+-- Vendor distribution is uneven, which may impact analysis of vendor performance.
+SELECT 
+    vendor,
+    COUNT(*) AS records
+FROM Micro_Center
+GROUP BY vendor
+ORDER BY records DESC;
+
+
+/*Mobile phone accessories have the highest number of records (1,100), 
+followed by selfie sticks and smartphone stands. Functionality distribution 
+is skewed, which may influence category-level sales analysis.
+*/
+SELECT 
+    functionality,
+    COUNT(*) AS occurrences
+FROM Micro_Center
+GROUP BY functionality
+ORDER BY occurrences DESC;
+
+
+/*
+====================================================
+ Planned Data Cleaning 
+====================================================
+ Recode 'Null' to appropriate color
+ Remove time from week column
+*/
+
+-- Update color for sku 9, functionality 11.Fitness trackers
+UPDATE Micro_Center
+SET color = 'black'
+WHERE color IS NULL AND sku = 9 AND functionality = '11.Fitness trackers';
+
+-- Update color for sku 42, functionality 09.Smartphone stands
+UPDATE Micro_Center
+SET color = 'black'
+WHERE color IS NULL AND sku = 42 AND functionality = '09.Smartphone stands';
+
+-- Update color for sku 43, functionality 11.Fitness trackers
+UPDATE Micro_Center
+SET color = 'gold'
+WHERE color IS NULL AND sku = 43 AND functionality = '11.Fitness trackers';
+
+-- Update color for sku 44, functionality 09.Smartphone stands
+UPDATE Micro_Center
+SET color = 'black'
+WHERE color IS NULL AND sku = 44 AND functionality = '09.Smartphone stands';
+
+-- update column week the column to just date, getting rid of time
+ALTER TABLE Micro_Center
+MODIFY week DATE;
+
+
+
+/*
+====================================================
+ Planned feature engineering 
+====================================================
+*/
+-- Add new column
+ALTER TABLE Micro_Center ADD COLUMN feat_main_flag TINYINT(1);
+
+-- Update values to 1 or 0
+UPDATE Micro_Center
+SET feat_main_flag = CASE
+    WHEN feat_main_page = 'TRUE' THEN 1
+    ELSE 0
+END;
+
+
+
+-- Add new columns 
+ALTER TABLE Micro_Center 
+    ADD COLUMN year INT,
+    ADD COLUMN month INT;
+
+-- Populate them
+UPDATE Micro_Center
+SET 
+    year = YEAR(week),
+    month = MONTH(week);
+    
+ 
+ -- Add new column for color encode
+ALTER TABLE Micro_Center ADD COLUMN color_code INT;
+UPDATE Micro_Center
+SET color_code = CASE 
+    WHEN color = 'black' THEN 1
+    WHEN color = 'blue' THEN 2
+    WHEN color = 'red' THEN 3
+    WHEN color = 'gold' THEN 4
+    WHEN color = 'pink' THEN 5
+    WHEN color = 'grey' THEN 6
+    WHEN color = 'green' THEN 7
+    WHEN color = 'white' THEN 8
+    WHEN color = 'purple' THEN 9
+    WHEN color IS NULL OR color = 'none' THEN 0
+    ELSE NULL
+END;
+
+
+
+-- Add new column for functionality encode
+ALTER TABLE Micro_Center ADD COLUMN functionality_code INT;
+UPDATE Micro_Center
+SET functionality_code = CASE 
+    WHEN functionality = '01.Streaming sticks' THEN 1
+    WHEN functionality = '02.Portable smartphone chargers' THEN 2
+    WHEN functionality = '03.Bluetooth speakers' THEN 3
+    WHEN functionality = '04.Selfie sticks' THEN 4
+    WHEN functionality = '05.Bluetooth tracker' THEN 5
+    WHEN functionality = '06.Mobile phone accessories' THEN 6
+    WHEN functionality = '07.Headphones' THEN 7
+    WHEN functionality = '08.Digital pencils' THEN 8
+    WHEN functionality = '09.Smartphone stands' THEN 9
+    WHEN functionality = '10.Virtual reality headset' THEN 10
+    WHEN functionality = '11.Fitness trackers' THEN 11
+    WHEN functionality = '12.Flash drives' THEN 12
+    ELSE NULL
+END;
+
+-- Alter table, add new columns for seasonality
+ALTER TABLE Micro_Center ADD COLUMN week_number INT;
+UPDATE Micro_Center SET week_number = WEEK(week);
+
+ALTER TABLE Micro_Center ADD COLUMN quarter INT;
+UPDATE Micro_Center SET quarter = QUARTER(week);
+
+
+-- Adding revenue column for financial performance
+ALTER TABLE Micro_Center ADD COLUMN revenue DECIMAL(10,2);
+UPDATE Micro_Center SET revenue = weekly_sales * price;
+
+-- Remove irrelevant characters
+UPDATE Micro_Center
+SET functionality = SUBSTRING(functionality, 4);
+
+
+/*
+====================================================
+ Stakeholders Business Questions
+====================================================
+Price & Promotion Effects
+1.) Are promotional features (main page placements) driving higher sales volumes?
+
+Vendor & SKU Performance
+2.) Which vendors consistently provide top-performing products?
+
+Product Functionality Insights
+3.) What product functionalities drive the most revenue?
+*/
+
+-- calculates the percentage of total sales attributed to products 
+-- that were featured on the main page vs. those that were not
+WITH sales_summary AS (
+    SELECT 
+        feat_main_page,
+        SUM(weekly_sales) AS total_sales_by_group
+    FROM Micro_Center
+    GROUP BY feat_main_page
+),
+overall AS (
+    SELECT SUM(weekly_sales) AS total_sales_all FROM Micro_Center
+)
+SELECT 
+    s.feat_main_page,
+    s.total_sales_by_group,
+    o.total_sales_all,
+    ROUND(s.total_sales_by_group * 100.0 / o.total_sales_all, 2) AS ctr_like_percentage
+FROM sales_summary s
+JOIN overall o;
+
+
+-- Calculates average weekly sales per vendor and ranks them in descending order.
+-- Helps identify top-performing vendors based on sales performance.
+SELECT 
+    vendor,
+    ROUND(AVG(weekly_sales), 2) AS avg_weekly_sales,
+    RANK() OVER (ORDER BY AVG(weekly_sales) DESC) AS vendor_rank
+FROM Micro_Center
+GROUP BY vendor
+ORDER BY vendor_rank;
+
+-- Calculates total revenue by product functionality and ranks them.
+-- Helps identify which product categories contribute most to overall sales performance.
+SELECT 
+    functionality,
+    ROUND(SUM(weekly_sales * price), 2) AS total_revenue,
+    RANK() OVER (ORDER BY SUM(weekly_sales * price) DESC) AS revenue_rank
+FROM Micro_Center
+GROUP BY functionality
+ORDER BY revenue_rank;
+
+/*
+====================================================
+ Stakeholders Business Questions
+====================================================
+/*
+🔍 Summary of Key Findings
+
+1️.) Price & Promotion Effects
+- Products featured on the main page accounted for 52.91% of total sales, despite being a smaller portion of the dataset.
+- This suggests that homepage promotion has a measurable impact on weekly sales performance.
+
+2️.) Vendor & SKU Performance
+- Vendor 8 consistently ranks #1 in average weekly sales (197.24 units).
+- Vendors 2 and 4 also perform strongly, while vendors 7 and 1 show significantly lower performance.
+
+3️.) Product Functionality Insights
+- Mobile phone accessories generated the highest total revenue (~1.79M), followed by fitness trackers (~1.29M) and selfie sticks (~1.06M).
+- The lowest revenue came from Bluetooth trackers and headphones.
+- These insights highlight which product categories are most financially impactful.
+*/
+
+
+/*	
+	The following business questions are better suited for Python due to the flexibility in 
+	visual exploration, time-series analysis, and modeling capabilities.
+*/
+-- How does product price impact weekly sales performance over time?
+-- What are the peak sales periods across the year?
+-- Optimization Opportunities: Strategic recommendations will be derived by analyzing trends.
+
+/*
+==============================================================
+ Final reordering of columns for further analysis
+==============================================================
+*/
+
+select 
+	week, year,quarter, month, week_number, 
+    sku, functionality,functionality_code, color ,color_code, 
+    feat_main_page, feat_main_flag, vendor, 
+    weekly_sales, price, revenue
+from micro_center;
