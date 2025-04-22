@@ -337,8 +337,8 @@ ORDER BY revenue_rank;
 
 
 /*	
-	The following business questions are better suited for Python due to the flexibility in 
-	visual exploration, time-series analysis, and modeling capabilities.
+The following business questions are better suited for Python due to the flexibility in 
+visual exploration, time-series analysis, and modeling capabilities.
 */
 -- How does product price impact weekly sales performance over time?
 -- What are the peak sales periods across the year?
@@ -351,8 +351,9 @@ ORDER BY revenue_rank;
 */
 
 select 
-	week, year,quarter, month, week_number, 
-    sku, functionality,functionality_code, color ,color_code, 
-    feat_main_page, feat_main_flag, vendor, 
-    weekly_sales, price, revenue
-from micro_center;
+			week, year,quarter, month, week_number, 
+    	sku, functionality,functionality_code, color ,color_code, 
+    	feat_main_page, feat_main_flag, vendor, 
+    	weekly_sales, price, revenue
+from 
+	micro_center;
