@@ -316,11 +316,9 @@ ORDER BY revenue_rank;
 
 /*
 ====================================================
- Stakeholders Business Questions
+ 🔍 Summary of Key Findings
 ====================================================
 /*
-🔍 Summary of Key Findings
-
 1️.) Price & Promotion Effects
 - Products featured on the main page accounted for 52.91% of total sales, despite being a smaller portion of the dataset.
 - This suggests that homepage promotion has a measurable impact on weekly sales performance.
@@ -343,6 +341,7 @@ visual exploration, time-series analysis, and modeling capabilities.
 -- How does product price impact weekly sales performance over time?
 -- What are the peak sales periods across the year?
 -- Optimization Opportunities: Strategic recommendations will be derived by analyzing trends.
+
 
 /*
 ==============================================================
