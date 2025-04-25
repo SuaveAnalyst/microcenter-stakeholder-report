@@ -80,7 +80,7 @@ Targeted SQL queries regarding various business questions can be found here [htt
 Recommendation:
 
  * Use demand forecasting to reduce overstock risk during these periods.
-Focus on lean inventory strategies and use promo testing to determine if these slumps can be lifted cost-effectively.
+   Focus on lean inventory strategies and use promo testing to determine if these slumps can be lifted cost-effectively.
 
 💡**Insight**: June and September are the highest grossing months (43k each), with clear spikes in weekly sales during weeks 24–26 and 37–38.
 
@@ -92,7 +92,7 @@ Recommendation:
 
 Recommendation:
 
- * Implement price elasticity modeling per SKU and test strategic markdowns during shoulder seasons (e.g., February, April, November) to smooth out low-demand dips without cutting into high-margin periods.
+ * Implement price elasticity modeling per SKU and test strategic markdowns during shoulder seasons (e.g., February, April, November) to smooth out low-demand dips without    cutting into high-margin periods.
 
 
 
