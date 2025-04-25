@@ -29,6 +29,8 @@ Price & Promotion Effects
 **"The distribution of weekly_sales is right-skewed for both groups, but the Promo group shows more high-end outliers. This suggests that main page promotions not only boost average sales but can also trigger occasional spikes in demand."**
   
   ![Promo Impact](05_promotion_vs_weekly_sales.png)
+
+  **"The bar chart shows the average weekly sales for both promoted and non-promoted products. Products featured on the main page had nearly twice the average weekly sales compared to those that weren’t promoted. This provides a clear indication that promotional placement has a positive impact on overall sales performance."**
     
 Vendor & SKU Performance
  * 2.) Which vendors consistently provide top-performing products?
