@@ -73,7 +73,7 @@ Targeted SQL queries regarding various business questions can be found here [htt
     **“At Micro Center, peak sales periods consistently occur around late Q2 and early Q3, especially in June and September, likely driven by tech-seasonality like PC builds, back-to-school, or targeted promotions. Interestingly, Q4 does not exhibit the typical holiday surge seen in general retail, suggesting an opportunity to either ramp up campaigns during this time or focus budget earlier in the year.”**
    
 
-**Optimization Opportunities: Strategic recommendations will be derived by analyzing trends.
+# Optimization Opportunities: Strategic recommendations will be derived by analyzing trends.
 
 💡**Insight**: February is the weakest sales month (17k), followed by April and December.
 
