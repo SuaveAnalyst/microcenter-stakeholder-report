@@ -21,7 +21,7 @@ The SQL queries used to inspect and clean the data for this analysis can be foun
 Targeted SQL queries regarding various business questions can be found here [https://github.com/SuaveAnalyst/microcenter-stakeholder-report/blob/de6da56e4cca384a817f6a4cacbc569685e0122c/Micro%20Center%20SQL%20Ad-Hoc%20Report#L318-L343]
 
 # Business Questions Visualized
-Price & Promotion Effects
+***Price & Promotion Effects***
  * 1.) Are promotional features (main page placements) driving higher sales volumes?
    
   ![Promo Impact](06_avg_weekly_sales_promo_vs_no_promo.png)
@@ -32,7 +32,7 @@ Price & Promotion Effects
 
   **"The bar chart shows the average weekly sales for both promoted and non-promoted products. Products featured on the main page had nearly twice the average weekly sales compared to those that weren’t promoted. This provides a clear indication that promotional placement has a positive impact on overall sales performance."**
     
-Vendor & SKU Performance
+***Vendor & SKU Performance***
  * 2.) Which vendors consistently provide top-performing products?
 
    ![Promo Impact](07_total_weekly_sales_by_vendor.png)
@@ -43,7 +43,7 @@ Vendor & SKU Performance
 
     **"Vendor 8 not only leads in total sales but also consistently supports high-performing SKUs—particularly SKU 30, which shows the strongest sales intensity overall. This indicates that Vendor 8 delivers both volume and reliability, making it a key contributor to revenue."**
 
-Product Functionality Insights
+***Product Functionality Insights***
  * 3.) What product functionalities drive the most revenue?
 
    ![Promo Impact](09_revenue_distribution_by_functionality.png)
@@ -54,13 +54,45 @@ Product Functionality Insights
 
     **"Functionality 6 is winning by volume (lots of products selling steadily), while Functionality 11 is winning by product strength (fewer products, but stronger performance per item)."**
 
-Sales Trends Analysis
+***Sales Trends Analysis***
  * 4.) How does product price impact weekly sales performance over time?
 
-Sales Trends Analysis
+   ![Promo Impact](11_avg_price_and_sales_over_time.png)
+
+    **"While average prices steadily rise, weekly sales show an inverse pattern at key points. For example, during periods where price dips slightly, such as in late 2017 and summer 2018, sales surge — suggesting a negative price elasticity, where lower prices drive higher sales."**
+
+***Sales Trends Analysis***
  * 5.) What are the peak sales periods across the year?
 
-Optimization Opportunities: Strategic recommendations will be derived by analyzing trends.
+   ![Promo Impact](12_total_sales_by_month.png)
+
+    **“Sales peak mid-year, especially from May to September, making this the most profitable season. In contrast, February and Q4 show consistently lower sales, suggesting opportunities for targeted campaigns or off-season promotions to drive volume during slow periods.”**
+
+   ![Promo Impact](13_avg_weekly_sales_by_week_number.png)
+
+    **“At Micro Center, peak sales periods consistently occur around late Q2 and early Q3, especially in June and September, likely driven by tech-seasonality like PC builds, back-to-school, or targeted promotions. Interestingly, Q4 does not exhibit the typical holiday surge seen in general retail, suggesting an opportunity to either ramp up campaigns during this time or focus budget earlier in the year.”**
+   
+
+***Optimization Opportunities: Strategic recommendations will be derived by analyzing trends.***
+
+💡**Insight**: February is the weakest sales month (17k), followed by April and December.
+
+Recommendation:
+
+Use demand forecasting to reduce overstock risk during these periods.
+Focus on lean inventory strategies and use promo testing to determine if these slumps can be lifted cost-effectively.
+
+💡**Insight**: June and September are the highest grossing months (43k each), with clear spikes in weekly sales during weeks 24–26 and 37–38.
+
+Recommendation:
+
+Focus marketing and inventory efforts around late Q2 and early Q3. Launch seasonal bundles or flash sales timed with these periods to maximize ROI on high-traffic windows.
+
+💡**Insight**: Visuals show an inverse relationship between price and sales — lower prices frequently align with sales spikes.
+
+Recommendation:
+
+Implement price elasticity modeling per SKU and test strategic markdowns during shoulder seasons (e.g., February, April, November) to smooth out low-demand dips without cutting into high-margin periods.
 
 
 
