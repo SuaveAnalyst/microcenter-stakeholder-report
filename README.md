@@ -22,7 +22,7 @@ Targeted SQL queries regarding various business questions can be found here [htt
 
 # Business Questions Visualized
 Price & Promotion Effects
- * 1.) Are promotional features (main page placements) driving higher sales volumes? [https://github.com/SuaveAnalyst/microcenter-stakeholder-report/blob/21751e206b483e3b5514552e930d7fc9428f8da8/06_avg_weekly_sales_promo_vs_no_promo.png]
+ * 1.) Are promotional features (main page placements) driving higher sales volumes? [https://github.com/SuaveAnalyst/microcenter-stakeholder-report/blob/21751e206b483e3b5514552e930d7fc9428f8da8/06_avg_weekly_sales_promo_vs_no_promo.png] [06_avg_weekly_sales_promo_vs_no_promo.png]
 
 Vendor & SKU Performance
  * 2.) Which vendors consistently provide top-performing products?
