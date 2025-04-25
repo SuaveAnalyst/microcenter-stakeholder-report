@@ -25,6 +25,7 @@ Price & Promotion Effects
  * 1.) Are promotional features (main page placements) driving higher sales volumes?
    
   ![Promo Impact](06_avg_weekly_sales_promo_vs_no_promo.png)
+  
 **"The distribution of weekly_sales is right-skewed for both groups, but the Promo group shows more high-end outliers. This suggests that main page promotions not only boost average sales but can also trigger occasional spikes in demand."**
   
   ![Promo Impact](05_promotion_vs_weekly_sales.png)
