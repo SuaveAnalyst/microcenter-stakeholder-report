@@ -35,8 +35,24 @@ Price & Promotion Effects
 Vendor & SKU Performance
  * 2.) Which vendors consistently provide top-performing products?
 
+   ![Promo Impact](07_total_weekly_sales_by_vendor.png)
+
+    **"Vendor 8 stands out as the top performer, generating the highest total weekly sales by a significant margin, followed by Vendors 6 and 5. This suggests that Vendor 8 consistently supplies high-demand products and may be a strong candidate for expanded partnerships or promotional focus. Further analysis of SKU-level performance within these vendors could help pinpoint the drivers of this success."**
+
+   ![Promo Impact](08_vendor_sku_sales_heatmap.png)
+
+    **"Vendor 8 not only leads in total sales but also consistently supports high-performing SKUs—particularly SKU 30, which shows the strongest sales intensity overall. This indicates that Vendor 8 delivers both volume and reliability, making it a key contributor to revenue."**
+
 Product Functionality Insights
  * 3.) What product functionalities drive the most revenue?
+
+   ![Promo Impact](09_revenue_distribution_by_functionality.png)
+
+    **"The box plot shows how much money each product makes within each functionality. Here, Functionality 11 stands out because its individual products tend to earn more, even if it doesn’t sell as many."**
+
+   ![Promo Impact](10_total_revenue_by_functionality.png)
+
+    **"Functionality 6 is winning by volume (lots of products selling steadily), while Functionality 11 is winning by product strength (fewer products, but stronger performance per item)."**
 
 Sales Trends Analysis
  * 4.) How does product price impact weekly sales performance over time?
