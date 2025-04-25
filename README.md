@@ -22,7 +22,7 @@ Targeted SQL queries regarding various business questions can be found here [htt
 
 # Business Questions Visualized
 Price & Promotion Effects
- * 1.) Are promotional features (main page placements) driving higher sales volumes? ![Promo Impact](plots/06_avg_weekly_sales_promo_vs_no_promo.png)
+ * 1.) Are promotional features (main page placements) driving higher sales volumes? ![Promo Impact](06_avg_weekly_sales_promo_vs_no_promo.png)
 
 Vendor & SKU Performance
  * 2.) Which vendors consistently provide top-performing products?
