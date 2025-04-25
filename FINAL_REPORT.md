@@ -125,6 +125,10 @@ This table contains weekly sales records for various SKUs (products) sold by Mic
 
 *********************************************************************************************************************************
 
+## 🧪 Tech Stack
+- Python (Pandas, SciPy, Plotly)
+- SQL
+- Jupyter Notebook
 
 
                                                     Original Dataset
