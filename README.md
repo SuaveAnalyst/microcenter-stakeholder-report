@@ -73,26 +73,26 @@ Targeted SQL queries regarding various business questions can be found here [htt
     **“At Micro Center, peak sales periods consistently occur around late Q2 and early Q3, especially in June and September, likely driven by tech-seasonality like PC builds, back-to-school, or targeted promotions. Interestingly, Q4 does not exhibit the typical holiday surge seen in general retail, suggesting an opportunity to either ramp up campaigns during this time or focus budget earlier in the year.”**
    
 
-***Optimization Opportunities: Strategic recommendations will be derived by analyzing trends.***
+**Optimization Opportunities: Strategic recommendations will be derived by analyzing trends.
 
 💡**Insight**: February is the weakest sales month (17k), followed by April and December.
 
 Recommendation:
 
-Use demand forecasting to reduce overstock risk during these periods.
+ * Use demand forecasting to reduce overstock risk during these periods.
 Focus on lean inventory strategies and use promo testing to determine if these slumps can be lifted cost-effectively.
 
 💡**Insight**: June and September are the highest grossing months (43k each), with clear spikes in weekly sales during weeks 24–26 and 37–38.
 
 Recommendation:
 
-Focus marketing and inventory efforts around late Q2 and early Q3. Launch seasonal bundles or flash sales timed with these periods to maximize ROI on high-traffic windows.
+ * Focus marketing and inventory efforts around late Q2 and early Q3. Launch seasonal bundles or flash sales timed with these periods to maximize ROI on high-traffic windows.
 
 💡**Insight**: Visuals show an inverse relationship between price and sales — lower prices frequently align with sales spikes.
 
 Recommendation:
 
-Implement price elasticity modeling per SKU and test strategic markdowns during shoulder seasons (e.g., February, April, November) to smooth out low-demand dips without cutting into high-margin periods.
+ * Implement price elasticity modeling per SKU and test strategic markdowns during shoulder seasons (e.g., February, April, November) to smooth out low-demand dips without cutting into high-margin periods.
 
 
 
