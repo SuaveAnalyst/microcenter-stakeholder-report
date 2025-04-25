@@ -20,7 +20,23 @@ The SQL queries used to inspect and clean the data for this analysis can be foun
 
 Targeted SQL queries regarding various business questions can be found here [https://github.com/SuaveAnalyst/microcenter-stakeholder-report/blob/de6da56e4cca384a817f6a4cacbc569685e0122c/Micro%20Center%20SQL%20Ad-Hoc%20Report#L318-L343]
 
-An interactive Power BI dashboard used to report and explore sales trends can be found here [link].
+# Business Questions Visualized
+ * Price & Promotion Effects
+   1.) Are promotional features (main page placements) driving higher sales volumes? [06_avg_weekly_sales_promo_vs_no_promo.png]
+
+Vendor & SKU Performance
+ * 2.) Which vendors consistently provide top-performing products?
+
+Product Functionality Insights
+ * 3.) What product functionalities drive the most revenue?
+
+Sales Trends Analysis
+ * 4.) How does product price impact weekly sales performance over time?
+
+Sales Trends Analysis
+ * 5.) What are the peak sales periods across the year?
+
+Optimization Opportunities: Strategic recommendations will be derived by analyzing trends.
 
 
 
